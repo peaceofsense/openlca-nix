@@ -14,6 +14,8 @@
           config.allowUnfree = true;
         };
 
+        logo = ./assets/logo.png;
+
         openlca = pkgs.stdenv.mkDerivation rec {
           pname = "openlca";
           version = "2.6.1";
@@ -24,7 +26,6 @@
             name = "openLCA_mkl_Linux_x64_${version}.tar.gz";
           };
 
-          # tar.gz extracts into openLCA/ subdirectory
           sourceRoot = "openLCA";
 
           nativeBuildInputs = with pkgs; [
@@ -39,10 +40,10 @@
             gtk4
             glib
             gsettings-desktop-schemas
-            libX11
-            libXtst
-            libXrender
-            libXi
+            libx11
+            libxtst
+            libxrender
+            libxi
             freetype
             fontconfig
             zlib
@@ -52,29 +53,27 @@
             harfbuzz
             atk
             gdk-pixbuf
-
-            # Audio (JRE libjsound.so)
             alsa-lib
 
             # OpenCL
             ocl-icd
 
-            # Intel TBB (for libmkl_tbb_thread)
+            # Intel TBB
             onetbb
 
-            # Intel MKL runtime libs
+            # Intel MKL
             mkl
           ];
 
           autoPatchelfIgnoreMissingDeps = [
-            "libc.so.8"          
-            "libsycl.so.6"       
-            "libOpenCL.so.1"     
-            "libze_loader.so.1"  
-            "libimf.so"         
-            "libsvml.so"         
-            "libirng.so"         
-            "libintlc.so.5"     
+            "libc.so.8"
+            "libsycl.so.6"
+            "libOpenCL.so.1"
+            "libze_loader.so.1"
+            "libimf.so"
+            "libsvml.so"
+            "libirng.so"
+            "libintlc.so.5"
           ];
 
           dontBuild = true;
@@ -86,6 +85,10 @@
             mkdir -p $out/opt/openlca
             cp -r . $out/opt/openlca/
             chmod +x $out/opt/openlca/openLCA
+
+            # Install icon from repo assets
+            mkdir -p $out/share/icons/hicolor/256x256/apps
+            cp ${logo} $out/share/icons/hicolor/256x256/apps/openlca.png
 
             mkdir -p $out/bin
             makeWrapper $out/opt/openlca/openLCA $out/bin/openlca \
@@ -99,6 +102,7 @@
             Name=openLCA
             Comment=Life Cycle Assessment software
             Exec=$out/bin/openlca
+            Icon=openlca
             Terminal=false
             Type=Application
             Categories=Science;
