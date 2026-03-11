@@ -7,7 +7,7 @@ A Nix flake to install and run the [openLCA](https://www.openlca.org) - a free, 
 openLCA ships as a pre-built Eclipse RCP app bundled with its own JRE, Intel MKL, and SWT bindings. On standard distros, these "just work." On **NixOS**, they break. Because NixOS lacks a global `/lib`, bundled binaries can't find dependencies. This flake fixes that by: 
 * **Patching** ELF binaries for the Nix store. 
 * **Wrapping** the app with the correct `LD_LIBRARY_PATH`. 
-* ~~**Fixing WebKitGTK** so the internal browser actually renders.~~ **(Current Issue)**
+* **Fixing WebKitGTK** so the internal browser actually renders. **(Somewhat Works)**
 
 ## Requirements
 

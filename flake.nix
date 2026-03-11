@@ -40,7 +40,7 @@
             gtk4
             glib
             gsettings-desktop-schemas
-            webkitgtk_4_1              # SWT Browser widget
+            webkitgtk_4_1
             libx11
             libxtst
             libxrender
@@ -97,6 +97,8 @@
               --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath buildInputs} \
               --set GSETTINGS_SCHEMA_DIR "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas" \
               --set WEBKIT_DISABLE_COMPOSITING_MODE 1
+              --set GTK_THEME Adwaita \
+              --set GDK_BACKEND x11
 
             mkdir -p $out/share/applications
             cat > $out/share/applications/openlca.desktop << EOF
