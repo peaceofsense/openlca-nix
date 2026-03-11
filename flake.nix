@@ -39,10 +39,10 @@
             gtk4
             glib
             gsettings-desktop-schemas
-            xorg.libX11
-            xorg.libXtst
-            xorg.libXrender
-            xorg.libXi
+            libX11
+            libXtst
+            libXrender
+            libXi
             freetype
             fontconfig
             zlib
@@ -67,14 +67,14 @@
           ];
 
           autoPatchelfIgnoreMissingDeps = [
-            "libc.so.8"          # DragonFlyBSD JNA - not Linux
-            "libsycl.so.6"       # Intel SYCL GPU offload - optional
-            "libOpenCL.so.1"     # OpenCL GPU - optional
-            "libze_loader.so.1"  # Intel Level Zero GPU - optional
-            "libimf.so"          # Intel compiler RT - GPU offload libs only
-            "libsvml.so"         # Intel SVML - GPU offload libs only
-            "libirng.so"         # Intel RNG - GPU offload libs only
-            "libintlc.so.5"      # Intel compiler RT - GPU offload libs only
+            "libc.so.8"          
+            "libsycl.so.6"       
+            "libOpenCL.so.1"     
+            "libze_loader.so.1"  
+            "libimf.so"         
+            "libsvml.so"         
+            "libirng.so"         
+            "libintlc.so.5"     
           ];
 
           dontBuild = true;
