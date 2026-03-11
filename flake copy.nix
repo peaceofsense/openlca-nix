@@ -40,7 +40,6 @@
             gtk4
             glib
             gsettings-desktop-schemas
-            webkitgtk_4_1              # SWT Browser widget
             libx11
             libxtst
             libxrender
@@ -95,8 +94,7 @@
             makeWrapper $out/opt/openlca/openLCA $out/bin/openlca \
               --chdir "$out/opt/openlca" \
               --prefix LD_LIBRARY_PATH : ${pkgs.lib.makeLibraryPath buildInputs} \
-              --set GSETTINGS_SCHEMA_DIR "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas" \
-              --set WEBKIT_DISABLE_COMPOSITING_MODE 1
+              --set GSETTINGS_SCHEMA_DIR "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}/glib-2.0/schemas"
 
             mkdir -p $out/share/applications
             cat > $out/share/applications/openlca.desktop << EOF
