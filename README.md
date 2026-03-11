@@ -1,4 +1,4 @@
-# openlca-nix
+# openLCA on NixOS
 
 
 A Nix flake for packaging [openLCA](https://www.openlca.org) - a free, open source software for Life Cycle Assessment (LCA) and sustainability analysis on NixOS.
